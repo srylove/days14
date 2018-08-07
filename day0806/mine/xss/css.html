@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <style>
+    /*xxs注入*/
+    /*只需要带有url()即可*/
+      .a{
+        background:url('javascript:alert(123)');
+      }
+      .b::content{
+        content: url('javascript:alert(123)');
+      }
+      .c{
+        color: expression(alert(123));
+      }
+
+    </style>
+    <body>
+      <div class="a">
+          111
+      </div>
+    </body>
+</html>

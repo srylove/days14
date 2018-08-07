@@ -1,0 +1,8 @@
+尽可能减少dom，提升页面加载效率，可使用css进行视觉欺骗
+css 使用gpu渲染  CPU计算数据
+同源策略  document.domain = "baidu.com"
+src跨域
+  script img iframe
+
+协议 端口 域名不同会发生跨域
+HTML标签语义化
