@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box div {
+            position: absolute;
+            height: 160px;
+            width: 160px;
+            border: 3px solid #000;
+            background: rgba(255, 200, 80, 0.8);
+            text-align: center;
+            font-size: 130px;
+            -webkit-backface-visibility: visible;
+            -moz-backface-visibility: visible;
+            -ms-backface-visibility: visible;
+        }
+
+        #box {
+            -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            -webkit-perspective: 150;
+            -webkit-perspective-origin: 10% 10%;
+        }
+        #box >div :hover{
+            transform:rotateX(3600deg)rotateY(3600deg);
+        }
+        #box .one {
+            background: rgb(218, 36, 36);
+            transform: rotateY(90deg)translateZ(-80px);
+        }
+
+        #box .two {
+            /* transform: rotateX(80deg); */
+            background: rgb(38, 201, 74);
+            transform: rotateY(90deg)translateZ(80px);
+        }
+
+        #box .three {
+            /* transform: rotateX(80deg); */
+            background: rgb(217, 240, 17);
+            transform: rotateX(90deg)translateZ(80px)rotateZ(360deg);
+        }
+
+        #box .four {
+            /* transform: rotateX(80deg); */
+            background: rgb(96, 10, 196);
+            transform: rotateX(90deg)translateZ(-80px)rotateZ(180deg);
+        }
+
+        #box .five {
+            /* transform: rotateX(80deg); */
+            background: rgb(226, 17, 104);
+            transform: rotateX(0deg)translateZ(-80px)rotateZ(180deg);
+        }
+
+        #box .six {
+            /* transform: rotateX(80deg); */
+            background: rgb(26, 206, 238);
+            transform: rotateX(0deg)translateZ(80px);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="view" style="width: 160px;height: 160px;margin: 80px">
+        <div id="box">
+            <div class="one">1</div>
+            <div class="two">2</div>
+            <div class="three">3</div>
+            <div class="four">4</div>
+            <div class="five">5</div>
+            <div class="six">6</div>
+        </div>
+    </div>
+</body>
+
+</html>

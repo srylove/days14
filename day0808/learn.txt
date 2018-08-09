@@ -1,0 +1,6 @@
+
+定义 3D 转换元素的透视视图。
+perspective:150;
+perspective-origin: 10% 10%;
+-webkit-perspective:150;	/* Safari 和 Chrome */
+-webkit-perspective-origin: 10% 10%;	/* Safari 和 Chrome */
