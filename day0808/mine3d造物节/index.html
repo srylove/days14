@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="http://cdn.bootcss.com/zepto/1.0rc1/zepto.min.js"></script>
+    <style>
+        #box {
+            transform-style: preserve-3d;/* 开启3D支持 */
+            
+            /* transform: perspective(180px);加在这没啥用 */
+            height: 100%;
+        }
+
+        body {
+            background-image: url('./img/bg.jpg')
+        }
+
+        .main {
+            margin: 0 auto 0 auto;
+            width: 100%;
+            perspective: 25rem;
+        }
+
+        #box {
+            height: 100%;
+            -webkit-perspective-origin: 50% 50%; /* 进行3D图像初始位置的变换 */
+           
+        }
+
+        #box>div {
+            position: absolute;
+            width: 8.0625rem;
+            height: 73.125rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main" class="main">
+        <div id="box">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+            <div>5</div>
+            <div>6</div>
+            <div>7</div>
+            <div>8</div>
+            <div>9</div>
+            <div>10</div>
+            <div>11</div>
+            <div>12</div>
+            <div>13</div>
+            <div>14</div>
+            <div>15</div>
+            <div>16</div>
+            <div>17</div>
+            <div>18</div>
+            <div>19</div>
+            <div>20</div>
+        </div>
+    </div>
+    <script>
+        var box = document.getElementById('box');
+        var arr = box.getElementsByTagName('div');
+        var radius = calculateRadius(129, 20);
+        console.log(arr)
+        for (var i = 0; i < arr.length; i++) {
+            arr[i].style.background = 'url("./img/p' + (i + 1) + '.png") no-repeat';
+            arr[i].style.WebkitTransform = "rotateY(" + 360 / arr.length * i + 'deg) translatez(' + radius + 'px)';
+        }
+        function calculateRadius(length, totalNum) {
+            return Math.round(length / (2 * Math.tan(Math.PI / totalNum))) - 3;
+        }
+        var startX = 0,
+            x = 0,
+            endX = 0;
+        var flag = true;
+        $('#box').on('touchstart', function (event) {
+            event.preventDefault();
+            var touch = event.targetTouches[0];
+            startX = touch.pageX - x;
+        })
+        $('#box').on('touchmove', function (event) {
+            if (flag) {
+                event.preventDefault();//阻止默认的事件
+                var touch = event.targetTouches[0];
+                var xxx = event.targetTouches[1]
+                endX = touch.pageX;
+                x = endX - startX;
+
+                box.style.transform = 'rotateY(' + x + 'deg)';
+            } else {
+                return false;
+            }
+
+        })
+        $('#box').on('touchend', function (event) {
+            console.log("over");
+        });
+
+
+        window.addEventListener('deviceorientation', function (event) {
+
+            var gamma = event.gamma;
+            if (Math.abs(gamma) > 1) {
+                flag = false;
+                box.style.transform = 'rotateY(' + gamma * 3 + 'deg)';//为啥乘3？？？？？？？
+            } else {
+                flag = true;
+            }
+
+        })
+    </script>
+</body>
+
+</html>

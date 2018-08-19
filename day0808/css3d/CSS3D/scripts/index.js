@@ -3,6 +3,7 @@ var box = document.getElementById('box');
 var arr = box.getElementsByTagName('div');
 var radius = calculateRadius(129, 20);
 var audio = document.getElementById('audio');
+console.log(arr)
 
 for (var i = 0; i < arr.length; i++) {
 	arr[i].style.background = 'url("./img/p' + (i + 1) + '.png") no-repeat';
